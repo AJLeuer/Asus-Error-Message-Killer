@@ -21,12 +21,14 @@ namespace AsusErrorMessageKiller.MessageKiller.SystemIO
 			SystemMessageService.SendMessage(window, CloseWindowCommand.Item1, CloseWindowCommand.Item2, 0);
 		}
 
-		public static bool IsOpen(IntPtr window)
+		public static bool WindowIsPresent(IntPtr window)
 		{
-			bool windowExists = (window.ToInt64() > 0);
-			
-			return windowExists && IsWindowVisible(window);
+			return (window.ToInt64() > 0);
 		}
 		
+		public static bool IsOpen(IntPtr window)
+		{
+			return WindowIsPresent(window) && IsWindowVisible(window);
+		}
 	}
 }

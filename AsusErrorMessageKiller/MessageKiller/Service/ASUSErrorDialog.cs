@@ -1,6 +1,7 @@
 using System;
 using System.Threading;
 using AsusErrorMessageKiller.MessageKiller.SystemIO;
+using NodaTime;
 
 namespace AsusErrorMessageKiller.MessageKiller.Service
 {
@@ -13,13 +14,23 @@ namespace AsusErrorMessageKiller.MessageKiller.Service
 
 		public static void Kill()
 		{
+			Instant startTime = SystemClock.Instance.GetCurrentInstant();
+			Duration elapsedTime ;
 			// ReSharper disable once SuggestVarOrType_SimpleTypes
-			var dialog = WindowService.FindWindow(AsusErrorMessageClassName, AsusErrorMessageWindowName);
+			IntPtr dialog;
+
+			do
+			{
+				dialog = WindowService.FindWindow(AsusErrorMessageClassName, AsusErrorMessageWindowName);
+				elapsedTime = SystemClock.Instance.GetCurrentInstant() - startTime;
+				Thread.Sleep(TimeSpan.FromMilliseconds(25));
+			} while ((elapsedTime < Duration.FromSeconds(30)) && (WindowService.WindowIsPresent(dialog) == false));
+
 
 			while (WindowService.IsOpen(dialog))
 			{
 				WindowService.CloseWindow(dialog);
-				Thread.Sleep(TimeSpan.FromMilliseconds(20));
+				Thread.Sleep(TimeSpan.FromMilliseconds(25));
 			}
 
 			ConfirmedDialogClosedOrNotPresent = true;

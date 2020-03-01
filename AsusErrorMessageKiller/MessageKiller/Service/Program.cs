@@ -13,6 +13,7 @@ namespace AsusErrorMessageKiller.MessageKiller.Service
 
 		private static IHostBuilder CreateHostBuilder(string[] args) =>
 			Host.CreateDefaultBuilder(args)
-				.ConfigureServices((hostContext, services) => { services.AddHostedService<MessageKiller>(); });
+				.ConfigureServices((hostContext, services) => { services.AddHostedService<MessageKiller>(); })
+				.UseWindowsService();
 	}
 }
