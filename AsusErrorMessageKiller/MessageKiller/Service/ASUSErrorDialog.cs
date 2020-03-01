@@ -24,7 +24,7 @@ namespace AsusErrorMessageKiller.MessageKiller.Service
 				dialog = WindowService.FindWindow(AsusErrorMessageClassName, AsusErrorMessageWindowName);
 				elapsedTime = SystemClock.Instance.GetCurrentInstant() - startTime;
 				Thread.Sleep(TimeSpan.FromMilliseconds(25));
-			} while ((elapsedTime < Duration.FromSeconds(30)) && (WindowService.WindowIsPresent(dialog) == false));
+			} while ((elapsedTime < Duration.FromMinutes(5)) && (WindowService.WindowIsPresent(dialog) == false));
 
 
 			while (WindowService.IsOpen(dialog))

@@ -4,13 +4,14 @@
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<UserSecretsId>dotnet-AsusErrorMessageKiller-9F2E9906-521F-49B2-B843-FA6194E04219</UserSecretsId>
 		<LangVersion>preview</LangVersion>
-		<OutputType>Exe</OutputType>
+		<OutputType>WinExe</OutputType>
 		<Authors>Adam Leuer</Authors>
 		<Company>ThoughtWorks, Inc.</Company>
 		<Product>Asus Error Message Killer</Product>
 		<Description>Watches for and kills Asus' pointless ASIO error dialog</Description>
 		<PackageProjectUrl>https://github.com/AJLeuer/Asus-Error-Message-Killer</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/AJLeuer/Asus-Error-Message-Killer</RepositoryUrl>
+		<StartupObject>AsusErrorMessageKiller.MessageKiller.Service.Program</StartupObject>
 	</PropertyGroup>
 	
 	<ItemGroup>
