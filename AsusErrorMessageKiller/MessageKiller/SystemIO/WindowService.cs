@@ -24,8 +24,8 @@ namespace AsusErrorMessageKiller.MessageKiller.SystemIO
 		public static bool IsOpen(IntPtr window)
 		{
 			bool windowExists = (window.ToInt64() > 0);
-			bool windowVisible = IsWindowVisible(window);
-			return (windowExists && windowVisible);
+			
+			return windowExists && IsWindowVisible(window);
 		}
 		
 	}

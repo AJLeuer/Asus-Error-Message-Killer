@@ -8,6 +8,8 @@ namespace AsusErrorMessageKiller.MessageKiller.Service
 	{
 		private const string AsusErrorMessageClassName = "#32770";
 		private const string AsusErrorMessageWindowName = "Message";
+		
+		public static bool ConfirmedDialogClosedOrNotPresent { get; private set; } = false;
 
 		public static void Kill()
 		{
@@ -19,6 +21,8 @@ namespace AsusErrorMessageKiller.MessageKiller.Service
 				WindowService.CloseWindow(dialog);
 				Thread.Sleep(TimeSpan.FromMilliseconds(20));
 			}
+
+			ConfirmedDialogClosedOrNotPresent = true;
 		}
 	}
 }
